@@ -12,7 +12,6 @@ const app = express();
 app.use(cors());
 
 app.get('/location', (request, response) => {
-  // response.send('hello world you are on the location path');
   console.log(request.query.data);
   try {
     const locationData = searchToLatLng(request.query.data);
@@ -35,11 +34,8 @@ function searchToLatLng(locationName) {
 }
 
 app.get('/weather', (request, response) => {
-  // response.send('hello world you are on the weather path');
-  // console.log(request.query.data);
   try {
     const weatherData = searchWeather();
-    console.log(weatherData);
     response.send(weatherData);
   } catch (e) {
     response.status(500).send('Status 500: So sorry i broke')
